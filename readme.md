@@ -1,4 +1,3 @@
-	
 # Laravel Mpdf: Using Mpdf in Laravel 5 for generate Pdfs
 
 > Easily generate PDF documents from HTML right inside of Laravel using this mpdf wrapper.
@@ -9,9 +8,9 @@
 
 ## Installation
 
-Require this package in your `composer.json` 
+Require this package in your `composer.json`
 
-```
+```json
 "require": {
 	carlos-meneses/laravel-mpdf: "2.1.3"
 }
@@ -19,7 +18,7 @@ Require this package in your `composer.json`
 
 or install it by running:
 
-```
+```sh
 composer require carlos-meneses/laravel-mpdf
 ```
 
@@ -46,13 +45,15 @@ To use Laravel Mpdf add something like this to one of your controllers. You can 
 ```php
 //....
 use PDF;
-class ReportController extends Controller {
-	public function generate_pdf() 
+
+class ReportController extends Controller
+{
+	public function generate_pdf()
 	{
 		$data = [
 			'foo' => 'bar'
 		];
-		$pdf = PDF::loadView('pdf.document', $data);
+        $pdf = PDF::loadView('pdf.document', $data);
 		return $pdf->stream('document.pdf');
 	}
 }
@@ -64,30 +65,30 @@ You can use a custom file to overwrite the default configuration. Just create `c
 
 ```php
 return [
-	'mode'                 => '',
-	'format'               => 'A4',
-	'default_font_size'    => '12',
-	'default_font'         => 'sans-serif',
-	'margin_left'          => 10,
-	'margin_right'         => 10,
-	'margin_top'           => 10,
-	'margin_bottom'        => 10,
-	'margin_header'        => 0,
-	'margin_footer'        => 0,
-	'orientation'          => 'P',
-	'title'                => 'Laravel mPDF',
-	'author'               => '',
-	'watermark'            => '',
-	'show_watermark'       => false,
-	'watermark_font'       => 'sans-serif',
-	'display_mode'         => 'fullpage',
-	'watermark_text_alpha' => 0.1,
-	'custom_font_dir'      => '',
-	'custom_font_data' 	   => [],
-	'auto_language_detection'  => false,
-	'temp_dir'               => '',
-	'pdfa' 			=> false,
-        'pdfaauto' 		=> false,
+	'mode'                    => '',
+	'format'                  => 'A4',
+	'default_font_size'       => '12',
+	'default_font'            => 'sans-serif',
+	'margin_left'             => 10,
+	'margin_right'            => 10,
+	'margin_top'              => 10,
+	'margin_bottom'           => 10,
+	'margin_header'           => 0,
+	'margin_footer'           => 0,
+	'orientation'             => 'P',
+	'title'                   => 'Laravel mPDF',
+	'author'                  => '',
+	'watermark'               => '',
+	'show_watermark'          => false,
+	'watermark_font'          => 'sans-serif',
+	'display_mode'            => 'fullpage',
+	'watermark_text_alpha'    => 0.1,
+	'custom_font_dir'         => '',
+	'custom_font_data'        => [],
+	'auto_language_detection' => false,
+	'temp_dir'                => '',
+	'pdfa'                    => false,
+	'pdfaauto'                => false,
 ];
 ```
 
@@ -95,8 +96,8 @@ To override this configuration on a per-file basis use the fourth parameter of t
 
 ```php
 PDF::loadView('pdf', $data, [], [
-  'title' => 'Another Title',
-  'margin_top' => 0
+    'title' => 'Another Title',
+    'margin_top' => 0
 ])->save($pdfFilePath);
 ```
 
@@ -106,11 +107,11 @@ If you want to have headers and footers that appear on every page, add them to y
 
 ```html
 <htmlpageheader name="page-header">
-	Your Header Content
+    Your Header Content
 </htmlpageheader>
 
 <htmlpagefooter name="page-footer">
-	Your Footer Content
+    Your Footer Content
 </htmlpagefooter>
 ```
 
@@ -118,8 +119,8 @@ Now you just need to define them with the name attribute in your CSS:
 
 ```css
 @page {
-	header: page-header;
-	footer: page-footer;
+    header: page-header;
+    footer: page-footer;
 }
 ```
 
@@ -152,7 +153,7 @@ Now you can use the font in CSS:
 
 ```css
 body {
-	font-family: 'examplefont', sans-serif;
+    font-family: "examplefont", sans-serif;
 }
 ```
 
