@@ -48,14 +48,14 @@ use PDF;
 
 class ReportController extends Controller
 {
-	public function generate_pdf()
-	{
-		$data = [
-			'foo' => 'bar'
-		];
+    public function generate_pdf()
+    {
+        $data = [
+            'foo' => 'bar'
+        ];
         $pdf = PDF::loadView('pdf.document', $data);
-		return $pdf->stream('document.pdf');
-	}
+        return $pdf->stream('document.pdf');
+    }
 }
 ```
 
