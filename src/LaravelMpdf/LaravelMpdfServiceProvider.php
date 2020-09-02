@@ -14,7 +14,7 @@ class LaravelMpdfServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes(
                 [
-                    __DIR__.'/../config/pdf.php' => config_path('pdf.php'),
+                    __DIR__ . '/../config/pdf.php' => config_path('pdf.php'),
                 ],
                 ['config', 'pdf']
             );
@@ -22,16 +22,11 @@ class LaravelMpdfServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register the service provider.
-     *
-     * @return void
+     * Register the application services.
      */
     public function register()
     {
-        $this->mergeConfigFrom(
-            __DIR__ . '/../config/pdf.php',
-            'pdf'
-        );
+        $this->mergeConfigFrom(__DIR__ . '/../config/pdf.php', 'pdf');
 
         $this->app->bind(
             'mpdf.wrapper',
