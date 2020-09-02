@@ -7,6 +7,10 @@
         "php": ">=7.0.0",
         "mpdf/mpdf": "^8.0"
     },
+    "require-dev": {
+        "illuminate/support": "^7.0",
+        "squizlabs/php_codesniffer": "^3.5"
+    },
     "autoload": {
         "psr-4": {
             "Meneses\\LaravelMpdf\\": "src/LaravelMpdf"
