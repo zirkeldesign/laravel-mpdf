@@ -20,7 +20,14 @@
             "Meneses\\LaravelMpdf\\": "src/LaravelMpdf"
         }
     },
-    "require-dev": {
-        "squizlabs/php_codesniffer": "^3.5"
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Meneses\\LaravelMpdf\\LaravelMpdfServiceProvider"
+            ],
+            "aliases": {
+                "LaravelMpdf": "Meneses\\LaravelMpdf\\Facades\\LaravelMpdf"
+            }
+        }
     }
 }
