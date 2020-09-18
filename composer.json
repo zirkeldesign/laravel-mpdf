@@ -7,15 +7,9 @@
     "config": {
         "sort-packages": true
     },
-    "repositories": {
-        "mpdf": {
-            "url": "https://github.com/zirkeldesign/mpdf.git",
-            "type": "git"
-        }
-    },
     "require": {
-        "php": ">=7.2.0",
-        "mpdf/mpdf": "dev-development as 8.0.7-dev"
+        "php": ">=7.2.5",
+        "mpdf/mpdf": "^8.0"
     },
     "require-dev": {
         "illuminate/support": "^7.0|^8.0",
