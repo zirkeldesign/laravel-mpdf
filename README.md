@@ -59,7 +59,7 @@ class ReportController extends Controller
 }
 ```
 
-## Other methods
+### Other methods
 
 It is also possible to use the following methods on the `pdf` object:
 
@@ -110,15 +110,35 @@ PDF::loadView('pdf', $data, [], [
 ])->save($pdfFilePath);
 ```
 
-You can use a callback with the key 'instanceConfigurator' to access mPDF functions:
+### Included Fonts
+
+By default you can use all the fonts [shipped with mPDF](https://mpdf.github.io/fonts-languages/available-fonts-v6.html).
+
+### Custom Fonts
+
+You can use your own fonts in the generated PDFs. The TTF files have to be located in one folder, e.g. `resources/fonts/`. Add this to your configuration file (`/config/pdf.php`):
 
 ```php
-$config = ['instanceConfigurator' => function($mpdf) {
-    $mpdf->SetImportUse();
-    $mpdf->SetDocTemplate('/path/example.pdf', true);
-}]
+return [
+	'custom_font_dir' => base_path('resources/fonts/'), // don't forget the trailing slash!
+	'custom_font_data' => [
+		'examplefont' => [
+			'R'  => 'ExampleFont-Regular.ttf',    // regular font
+			'B'  => 'ExampleFont-Bold.ttf',       // optional: bold font
+			'I'  => 'ExampleFont-Italic.ttf',     // optional: italic font
+			'BI' => 'ExampleFont-Bold-Italic.ttf' // optional: bold-italic font
+		]
+		// ...add as many as you want.
+	]
+];
+```
 
-PDF::loadView('pdf', $data, [], $config)->save($pdfFilePath);
+Now you can use the font in CSS:
+
+```css
+body {
+    font-family: "examplefont", sans-serif;
+}
 ```
 
 ## Headers and Footers
@@ -146,48 +166,27 @@ Now you just need to define them with the name attribute in your CSS:
 
 Inside of headers and footers `{PAGENO}` can be used to display the page number.
 
-## Included Fonts
-
-By default you can use all the fonts [shipped with mPDF](https://mpdf.github.io/fonts-languages/available-fonts-v6.html).
-
-## Custom Fonts
-
-You can use your own fonts in the generated PDFs. The TTF files have to be located in one folder, e.g. `resources/fonts/`. Add this to your configuration file (`/config/pdf.php`):
-
-```php
-return [
-	'custom_font_dir' => base_path('resources/fonts/'), // don't forget the trailing slash!
-	'custom_font_data' => [
-		'examplefont' => [
-			'R'  => 'ExampleFont-Regular.ttf',    // regular font
-			'B'  => 'ExampleFont-Bold.ttf',       // optional: bold font
-			'I'  => 'ExampleFont-Italic.ttf',     // optional: italic font
-			'BI' => 'ExampleFont-Bold-Italic.ttf' // optional: bold-italic font
-		]
-		// ...add as many as you want.
-	]
-];
-```
-
-Now you can use the font in CSS:
-
-```css
-body {
-    font-family: "examplefont", sans-serif;
-}
-```
-
 ## Get instance your mPDF
 
-You can access all mpdf methods through the mpdf instance with `getMpdf()`.
+You can access all mPDF methods through the mpdf instance with `getMpdf()`.
 
 ```php
 use PDF;
 
 $pdf = PDF::loadView('pdf.document', $data);
 $pdf->getMpdf()->AddPage(...);
-
 ```
+
+You can also use a callback with the key `instanceConfigurator` to access mPDF methods:
+
+```php
+$config = ['instanceConfigurator' => function($mpdf) {
+    $mpdf->SetImportUse();
+    $mpdf->SetDocTemplate('/path/example.pdf', true);
+}];
+```
+
+PDF::loadView('pdf', $data, [], $config)->save(\$pdfFilePath);
 
 ## Set Protection
 
