@@ -61,6 +61,13 @@ class LaravelMpdf
         $this->mpdf->watermark_font     = $this->getConfig('watermark_font');
         $this->mpdf->watermarkTextAlpha = $this->getConfig('watermark_text_alpha');
 
+        if (
+            $this->getConfig('instanceConfigurator')
+            && is_callable($this->getConfig('instanceConfigurator'))
+        ) {
+            $this->getConfig('instanceConfigurator')($this->mpdf);
+        }
+
         $this->mpdf->WriteHTML($html);
     }
 
