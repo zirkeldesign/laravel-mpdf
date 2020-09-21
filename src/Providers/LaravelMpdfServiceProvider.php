@@ -1,8 +1,9 @@
 <?php
 
-namespace Meneses\LaravelMpdf;
+namespace Meneses\LaravelMpdf\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Meneses\LaravelMpdf\LaravelMpdfWrapper;
 
 class LaravelMpdfServiceProvider extends ServiceProvider
 {
@@ -14,7 +15,7 @@ class LaravelMpdfServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes(
                 [
-                    __DIR__ . '/../config/pdf.php' => config_path('pdf.php'),
+                    __DIR__ . '/../../config/pdf.php' => config_path('pdf.php'),
                 ],
                 ['config', 'pdf']
             );
@@ -26,7 +27,7 @@ class LaravelMpdfServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/pdf.php', 'pdf');
+        $this->mergeConfigFrom(__DIR__ . '/../../config/pdf.php', 'pdf');
 
         $this->app->bind(
             'mpdf.wrapper',

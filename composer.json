@@ -23,13 +23,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Meneses\\LaravelMpdf\\": "src/LaravelMpdf"
+            "Meneses\\LaravelMpdf\\": "src"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Meneses\\LaravelMpdf\\LaravelMpdfServiceProvider"
+                "Meneses\\LaravelMpdf\\Providers\\LaravelMpdfServiceProvider"
             ],
             "aliases": {
                 "LaravelMpdf": "Meneses\\LaravelMpdf\\Facades\\LaravelMpdf"
