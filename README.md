@@ -12,7 +12,7 @@ Require this package in your `composer.json`
 
 ```json
 "require": {
-	carlos-meneses/laravel-mpdf: "2.1.3"
+	"carlos-meneses/laravel-mpdf": "2.1.3"
 }
 ```
 
