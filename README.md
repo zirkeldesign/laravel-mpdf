@@ -1,4 +1,4 @@
-# Laravel Mpdf: Using Mpdf in Laravel 5 for generate Pdfs
+# Laravel mPDF: Using mPDF in Laravel >= 5.x for generate Pdfs
 
 > Easily generate PDF documents from HTML right inside of Laravel using this mpdf wrapper.
 
@@ -40,7 +40,7 @@ To start using Laravel, add the Service Provider and the Facade to your `config/
 
 ## Basic Usage
 
-To use Laravel Mpdf add something like this to one of your controllers. You can pass data to a view in `/resources/views`.
+To use Laravel mPDF add something like this to one of your controllers. You can pass data to a view in `/resources/views`.
 
 ```php
 //....
@@ -110,7 +110,7 @@ PDF::loadView('pdf', $data, [], [
 ])->save($pdfFilePath);
 ```
 
-You can use a callback with the key 'instanceConfigurator' to access mpdf functions:
+You can use a callback with the key 'instanceConfigurator' to access mPDF functions:
 
 ```php
 $config = ['instanceConfigurator' => function($mpdf) {
@@ -148,7 +148,7 @@ Inside of headers and footers `{PAGENO}` can be used to display the page number.
 
 ## Included Fonts
 
-By default you can use all the fonts [shipped with Mpdf](https://mpdf.github.io/fonts-languages/available-fonts-v6.html).
+By default you can use all the fonts [shipped with mPDF](https://mpdf.github.io/fonts-languages/available-fonts-v6.html).
 
 ## Custom Fonts
 
@@ -177,7 +177,7 @@ body {
 }
 ```
 
-## Get instance your Mpdf
+## Get instance your mPDF
 
 You can access all mpdf methods through the mpdf instance with `getMpdf()`.
 
@@ -191,4 +191,4 @@ $pdf->getMpdf()->AddPage(...);
 
 ## License
 
-Laravel Mpdf is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+Laravel mPDF is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
