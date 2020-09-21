@@ -6,9 +6,8 @@ use Illuminate\Support\Facades\Config;
 use Mpdf\Mpdf;
 
 /**
- * Laravel Mpdf: mPDF wrapper for Laravel 5
+ * Laravel Mpdf: mPDF wrapper for Laravel >= 5.x
  *
- * @package laravel-mpdf
  * @author  Carlos Meneses
  */
 class LaravelMpdf
@@ -57,8 +56,8 @@ class LaravelMpdf
         $this->mpdf->PDFA = $this->getConfig('pdfa') ?? false;
         $this->mpdf->PDFAauto = $this->getConfig('pdfaauto') ?? false;
 
-        $this->mpdf->showWatermarkText  = $this->getConfig('show_watermark');
-        $this->mpdf->watermark_font     = $this->getConfig('watermark_font');
+        $this->mpdf->showWatermarkText = $this->getConfig('show_watermark');
+        $this->mpdf->watermark_font = $this->getConfig('watermark_font');
         $this->mpdf->watermarkTextAlpha = $this->getConfig('watermark_text_alpha');
 
         if (
@@ -81,7 +80,7 @@ class LaravelMpdf
     }
 
     /**
-     * Get instance mpdf
+     * Get instance mpdf.
      *
      * @return static
      */
@@ -89,7 +88,6 @@ class LaravelMpdf
     {
         return $this->mpdf;
     }
-
 
     /**
      * Output the PDF as a string.
@@ -102,7 +100,7 @@ class LaravelMpdf
     }
 
     /**
-     * Save the PDF to a file
+     * Save the PDF to a file.
      *
      * @param  $filename
      * @return static
@@ -113,7 +111,7 @@ class LaravelMpdf
     }
 
     /**
-     * Make the PDF downloadable by the user
+     * Make the PDF downloadable by the user.
      *
      * @param  string $filename
      * @return \Symfony\Component\HttpFoundation\Response
@@ -124,7 +122,7 @@ class LaravelMpdf
     }
 
     /**
-     * Return a response with the PDF to show in the browser
+     * Return a response with the PDF to show in the browser.
      *
      * @param  string $filename
      * @return \Symfony\Component\HttpFoundation\Response
