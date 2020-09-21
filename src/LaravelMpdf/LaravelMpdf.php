@@ -8,7 +8,7 @@ use Mpdf\Mpdf;
 /**
  * Laravel Mpdf: mPDF wrapper for Laravel >= 5.x
  *
- * @author  Carlos Meneses
+ * @author Carlos Meneses
  */
 class LaravelMpdf
 {
@@ -60,8 +60,7 @@ class LaravelMpdf
         $this->mpdf->watermark_font = $this->getConfig('watermark_font');
         $this->mpdf->watermarkTextAlpha = $this->getConfig('watermark_text_alpha');
 
-        if (
-            $this->getConfig('instanceConfigurator')
+        if ($this->getConfig('instanceConfigurator')
             && is_callable($this->getConfig('instanceConfigurator'))
         ) {
             $this->getConfig('instanceConfigurator')($this->mpdf);
@@ -87,6 +86,25 @@ class LaravelMpdf
     public function getMpdf()
     {
         return $this->mpdf;
+    }
+
+    /**
+     * Encrypts and sets the PDF document permissions
+     *
+     * @see https://mpdf.github.io/reference/mpdf-functions/setprotection.html
+     *
+     * @param  array  $permissions   Permissions e.g.: ['copy', 'print']
+     * @param  string $userPassword  User password
+     * @param  string $ownerPassword Owner password
+     * @return static
+     */
+    public function setProtection($permissions, $userPassword = '', $ownerPassword = '')
+    {
+        if (func_get_args()[2] === null) {
+            $ownerPassword = bin2hex(openssl_random_pseudo_bytes(8));
+        }
+
+        return $this->mpdf->SetProtection($permissions, $userPassword, $ownerPassword);
     }
 
     /**
