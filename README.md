@@ -184,9 +184,9 @@ $config = ['instanceConfigurator' => function($mpdf) {
     $mpdf->SetImportUse();
     $mpdf->SetDocTemplate('/path/example.pdf', true);
 }];
-```
 
 PDF::loadView('pdf', $data, [], $config)->save(\$pdfFilePath);
+```
 
 ## Set Protection
 
