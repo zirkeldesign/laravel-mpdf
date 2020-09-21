@@ -63,10 +63,10 @@ class ReportController extends Controller
 
 It is also possible to use the following methods on the `pdf` object:
 
-- `output()`: Outputs the PDF as a string.
-- `save($filename)`: Save the PDF to a file
-- `download($filename)`: Make the PDF downloadable by the user.
-- `stream($filename)`: Return a response with the PDF to show in the browser.
+-   `output()`: Outputs the PDF as a string.
+-   `save($filename)`: Save the PDF to a file
+-   `download($filename)`: Make the PDF downloadable by the user.
+-   `stream($filename)`: Return a response with the PDF to show in the browser.
 
 ## Config
 
